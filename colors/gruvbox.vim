@@ -268,6 +268,8 @@ let s:gb.purple = s:purple
 let s:gb.aqua   = s:aqua
 let s:gb.orange = s:orange
 
+let g:gruvbox_pallete = s:gb
+
 " }}}
 " Setup Terminal Colors For Neovim: {{{
 
