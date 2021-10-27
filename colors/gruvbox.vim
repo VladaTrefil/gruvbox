@@ -142,6 +142,21 @@ if g:gruvbox_inverse == 0
   let s:inverse = ''
 endif
 
+let s:hls_cursor = s:orange
+
+let s:number_column = s:bg0
+let s:color_column = s:bg0
+let s:sign_column = s:bg0
+
+let s:vert_split = s:bg1
+
+let s:italicize_comments = s:italic
+let s:italicize_strings = s:italic
+
+let s:invert_signs = ''
+let s:invert_tabline = ''
+let s:invert_selection = s:inverse
+
 " }}}
 " Highlighting Function: {{{
 
