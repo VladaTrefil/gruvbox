@@ -1,36 +1,23 @@
-" -----------------------------------------------------------------------------
-" File: gruvbox.vim
-" Description: Retro groove color scheme for Vim
-" Author: morhetz <morhetz@gmail.com>
-" Source: https://github.com/morhetz/gruvbox
-" Last Modified: 12 Aug 2017
-" -----------------------------------------------------------------------------
-
 " Supporting code -------------------------------------------------------------
 " Global Settings: {{{
 
+" Enable true color
+set termguicolors
+
+" Double sign column
+set signcolumn=yes:2
+
 let g:colors_name='gruvbox'
 
-if !exists('g:gruvbox_bold')
-  let g:gruvbox_bold=1
-endif
+let g:gruvbox_bold=1
 
-if !exists('g:gruvbox_italic')
-  if has('gui_running') || $TERM_ITALICS == 'true'
-    let g:gruvbox_italic=1
-  else
-    let g:gruvbox_italic=0
-  endif
-endif
-if !exists('g:gruvbox_undercurl')
-  let g:gruvbox_undercurl=1
-endif
-if !exists('g:gruvbox_underline')
-  let g:gruvbox_underline=1
-endif
-if !exists('g:gruvbox_inverse')
-  let g:gruvbox_inverse=1
-endif
+let g:gruvbox_italic=1
+
+let g:gruvbox_undercurl=1
+
+let g:gruvbox_underline=1
+
+let g:gruvbox_inverse=1
 
 if !exists('g:gruvbox_guisp_fallback') || index(['fg', 'bg'], g:gruvbox_guisp_fallback) == -1
   let g:gruvbox_guisp_fallback='NONE'
@@ -43,28 +30,6 @@ endif
 if !exists('g:gruvbox_improved_warnings')
   let g:gruvbox_improved_warnings=0
 endif
-
-if !exists('g:gruvbox_termcolors')
-  let g:gruvbox_termcolors=256
-endif
-
-if !exists('g:gruvbox_invert_indent_guides')
-  let g:gruvbox_invert_indent_guides=0
-endif
-
-if exists('g:gruvbox_contrast')
-  echo 'g:gruvbox_contrast is deprecated; use g:gruvbox_contrast_light and g:gruvbox_contrast_dark instead'
-endif
-
-if !exists('g:gruvbox_contrast_dark')
-  let g:gruvbox_contrast_dark='medium'
-endif
-
-if !exists('g:gruvbox_contrast_light')
-  let g:gruvbox_contrast_light='medium'
-endif
-
-let s:is_dark=(&background == 'dark')
 
 " }}}
 " Palette: {{{
@@ -282,15 +247,15 @@ call s:HL('CursorLineNr', s:bright_orange, s:bg0)
 hi! link NonText GruvboxBg2
 hi! link SpecialKey GruvboxBg2
 
-call s:HL('Visual',    s:none,  s:bg3, s:invert_selection)
+call s:HL('Visual', s:none,  s:bg3, s:invert_selection)
 hi! link VisualNOS Visual
 
-call s:HL('Search',    s:bright_yellow, s:bg0, s:inverse)
+call s:HL('Search', s:bright_yellow, s:bg0, s:inverse)
 call s:HL('IncSearch', s:hls_cursor, s:bg0, s:inverse)
 
 call s:HL('Underlined', s:bright_blue, s:none, s:underline)
 
-call s:HL('StatusLine',   s:bg1, s:bright_orange, s:inverse)
+call s:HL('StatusLine', s:bg1, s:bright_orange, s:inverse)
 call s:HL('StatusLineNC', s:bg1, s:fg0, s:inverse)
 
 " The column separating vertically split windows
@@ -306,7 +271,7 @@ hi! link Directory GruvboxGreenBold
 hi! link Title GruvboxGreenBold
 
 " Error messages on the command line
-call s:HL('ErrorMsg',   s:bg0, s:bright_red, s:bold)
+call s:HL('ErrorMsg', s:bg0, s:bright_red, s:bold)
 " More prompt: -- More --
 hi! link MoreMsg GruvboxYellowBold
 " Current mode message: -- INSERT --
