@@ -255,33 +255,29 @@ call s:HL('Normal', s:fg1, s:bg0)
 
 set background=dark
 
-if version >= 700
-  " Screen line that the cursor is
-  call s:HL('CursorLine',   s:none, s:bg1)
-  " Screen column that the cursor is
-  hi! link CursorColumn CursorLine
+" Screen line that the cursor is
+call s:HL('CursorLine', s:none, s:bg1)
+" Screen column that the cursor is
+hi! link CursorColumn CursorLine
 
-  " Tab pages line filler
-  call s:HL('TabLineFill', s:bg4, s:bg1, s:invert_tabline)
-  " Active tab page label
-  call s:HL('TabLineSel', s:bright_green, s:bg1, s:invert_tabline)
-  " Not active tab page label
-  hi! link TabLine TabLineFill
+" Tab pages line filler
+call s:HL('TabLineFill', s:fg0, s:bg0, s:invert_tabline)
+" Active tab page label
+call s:HL('TabLineSel', s:bright_red, s:bg0, s:invert_tabline)
+" Not active tab page label
+hi! link TabLine TabLineFill
 
-  " Match paired bracket under the cursor
-  call s:HL('MatchParen', s:none, s:bg3, s:bold)
-endif
+" Match paired bracket under the cursor
+call s:HL('MatchParen', s:none, s:bg3, s:bold)
 
-if version >= 703
-  " Highlighted screen columns
-  call s:HL('ColorColumn',  s:none, s:color_column)
+" Highlighted screen columns
+call s:HL('ColorColumn',  s:none, s:color_column)
 
-  " Concealed element: \lambda → λ
-  call s:HL('Conceal', s:bright_blue, s:none)
+" Concealed element: \lambda → λ
+call s:HL('Conceal', s:bright_blue, s:none)
 
-  " Line number of CursorLine
-  call s:HL('CursorLineNr', s:bright_yellow, s:bg1)
-endif
+" Line number of CursorLine
+call s:HL('CursorLineNr', s:bright_orange, s:bg0)
 
 hi! link NonText GruvboxBg2
 hi! link SpecialKey GruvboxBg2
@@ -294,11 +290,11 @@ call s:HL('IncSearch', s:hls_cursor, s:bg0, s:inverse)
 
 call s:HL('Underlined', s:bright_blue, s:none, s:underline)
 
-call s:HL('StatusLine',   s:bg2, s:fg1, s:inverse)
-call s:HL('StatusLineNC', s:bg1, s:fg4, s:inverse)
+call s:HL('StatusLine',   s:bg1, s:bright_orange, s:inverse)
+call s:HL('StatusLineNC', s:bg1, s:fg0, s:inverse)
 
 " The column separating vertically split windows
-call s:HL('VertSplit', s:bg3, s:vert_split)
+call s:HL('VertSplit', s:bg1, s:bg1)
 
 " Current match in wildmenu completion
 call s:HL('WildMenu', s:bright_blue, s:bg2, s:bold)
@@ -327,10 +323,10 @@ hi! link WarningMsg GruvboxRedBold
 call s:HL('LineNr', s:bg4, s:number_column)
 
 " Column where signs are displayed
-call s:HL('SignColumn', s:none, s:sign_column)
+call s:HL('SignColumn', s:fg2, s:bg0)
 
 " Line used for closed folds
-call s:HL('Folded', s:gray, s:bg1, s:italic)
+call s:HL('Folded', s:faded_blue, s:bg1, s:italic)
 " Column where folds are displayed
 call s:HL('FoldColumn', s:gray, s:bg1)
 
@@ -419,16 +415,14 @@ hi! link Typedef GruvboxYellow
 " }}}
 " Completion Menu: {{{
 
-if version >= 700
-  " Popup menu: normal item
-  call s:HL('Pmenu', s:fg1, s:bg2)
-  " Popup menu: selected item
-  call s:HL('PmenuSel', s:bg2, s:bright_blue, s:bold)
-  " Popup menu: scrollbar
-  call s:HL('PmenuSbar', s:none, s:bg2)
-  " Popup menu: scrollbar thumb
-  call s:HL('PmenuThumb', s:none, s:bg4)
-endif
+" Popup menu: normal item
+call s:HL('Pmenu', s:fg1, s:bg2)
+" Popup menu: selected item
+call s:HL('PmenuSel', s:bg2, s:bright_blue, s:bold)
+" Popup menu: scrollbar
+call s:HL('PmenuSbar', s:none, s:bg2)
+" Popup menu: scrollbar thumb
+call s:HL('PmenuThumb', s:none, s:bg4)
 
 " }}}
 " Diffs: {{{
@@ -460,6 +454,16 @@ if has("spell")
   call s:HL('SpellRare',  s:none, s:none, s:undercurl, s:bright_purple)
 endif
 
+" }}}
+
+" Status Line: {{{
+function! g:ResetStatusLineColor()
+  call s:HL('StatusLine', s:bright_orange, s:bg1)
+endfunction
+
+function! g:SetStatusLineInsertColor()
+  call s:HL('StatusLine', s:fg0, s:faded_blue)
+endfunction
 " }}}
 
 " Plugin specific -------------------------------------------------------------
